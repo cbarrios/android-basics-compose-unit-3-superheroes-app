@@ -1,7 +1,6 @@
 package com.lalosapps.superheroesapp
 
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -22,7 +21,7 @@ import com.lalosapps.superheroesapp.model.Hero
 @Composable
 fun HeroList(heroes: List<Hero>, modifier: Modifier = Modifier) {
     LazyColumn(
-        modifier = modifier.background(MaterialTheme.colors.background)
+        modifier = modifier
     ) {
         items(heroes) {
             HeroItem(hero = it)
@@ -53,18 +52,15 @@ fun HeroItem(hero: Hero, modifier: Modifier = Modifier) {
                 )
             }
             Spacer(Modifier.width(16.dp))
-            Box(
+            Image(
                 modifier = Modifier
                     .size(72.dp)
-                    .clip(RoundedCornerShape(8.dp))
-            ) {
-                Image(
-                    painter = painterResource(hero.imageRes),
-                    contentDescription = null,
-                    alignment = Alignment.TopCenter,
-                    contentScale = ContentScale.FillWidth
-                )
-            }
+                    .clip(RoundedCornerShape(8.dp)),
+                painter = painterResource(hero.imageRes),
+                contentDescription = null,
+                alignment = Alignment.TopCenter,
+                contentScale = ContentScale.FillWidth
+            )
         }
     }
 }
